@@ -27,7 +27,7 @@ def ejecutar_ruta(robot: RobotG1, ruta_mapa: str):
     estado, ruta, pasos = greedy_navegacion(datos)
     
     if estado == "BLOQUEADO":
-        print("El algoritmo detecto bloqueo, no puede realizarse el recorrido.")
+        print("El algoritmo detecto bloqueo, no se hace el recorrido.")
         return
         
     instrucciones = traducir_ruta(ruta, datos['orientacion_inicial'], datos['tamano_celda_metros'])
@@ -47,7 +47,7 @@ def ejecutar_ruta(robot: RobotG1, ruta_mapa: str):
             
         elif "GIRAR DERECHA 90°" in instruccion:
            
-            velocidad_angular = -0.5 #
+            velocidad_angular = -0.5 
             tiempo = abs((math.pi / 2) / velocidad_angular)
             robot.movimiento(adelante=0.0, costado=0.0, giro=velocidad_angular, tiempo=tiempo)
             
