@@ -70,12 +70,20 @@ def ejecutar_ruta(robot: RobotG1, ruta_mapa: str):
     time.sleep(2)
 
 def main():
+    # Permite pasar el mapa como argumento: python3 integracion_simulador.py 2
+    mapa_elegido = "mapas/mapa_2.json" if len(sys.argv) > 1 and sys.argv[1] == "2" else (
+        f"mapas/mapa_{sys.argv[1]}.json" if len(sys.argv) > 1 and sys.argv[1] in ["1", "2", "3"]
+        else (sys.argv[1] if len(sys.argv) > 1 else "mapas/mapa_1.json")
+    )
+    
     robot = RobotG1()
     robot.conectar()
     
     try:
-        ejecutar_ruta(robot, "mapas/mapa_1.json")
+        ejecutar_ruta(robot, mapa_elegido)
         
+        # O podes descomentar manualmente el que quieras ejecutar:
+        # ejecutar_ruta(robot, "mapas/mapa_1.json")
         # ejecutar_ruta(robot, "mapas/mapa_2.json")
         # ejecutar_ruta(robot, "mapas/mapa_3.json")
         
